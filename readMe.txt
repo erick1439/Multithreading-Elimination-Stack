@@ -3,6 +3,7 @@
   + Compile the program as "javac EliminationBackOffStack.java"            
   + Run the program by typing "java EliminationBackOffStack"
   + The number of operation, size of stack, and execution time will be printed into the prompt console
+  + The program will run with 5 threads as default
 
 - Correctness 
   + For this stack implementation, I am using as a template the pseudo code from the book on chapter 11. This implementation will be 
