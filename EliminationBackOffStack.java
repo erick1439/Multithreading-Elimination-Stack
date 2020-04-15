@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
+// Class that represents each node in the stack
 class Node<T>
 {
 	int size;
@@ -17,6 +18,7 @@ class Node<T>
 	}
 }
 
+// Class that contains the action of each thread.
 class Process extends Thread
 {
   int id;
@@ -57,7 +59,7 @@ class Process extends Thread
   }
 }
 
-
+// Class that extends the original stack from hw2 which will make use of the elimination array.
 public class EliminationBackOffStack<T> extends Stack<T> 
 {
   private static class RangePolicy 
