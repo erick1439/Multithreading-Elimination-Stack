@@ -4,22 +4,20 @@
   + Run the program by typing "java EliminationBackOffStack"
   + The number of operation, size of stack, and execution time will be printed into the prompt console
 
+- Correctness 
+  + For this stack implementation, I am using as a template the pseudo code from the book on chapter 11. This implementation will be 
+    linearizable because we are inheriting all the essential operations from the stack on hw2. The difference is that we will add the 
+    elimination array to cancel out push() and pop() operations at the point in which they exchanged values. The linearization points 
+    of both the push() and the pop() methods is the successful compareAndSet(), or the throwing of the exception in case of a 
+    pop() on an empty stack.
 
-- Atomic Variables:
-    In part 2 we are also using another atomic variable to store the size of
-    the stack.
-
-- Description (Same description as part 1):
-    In this stack implementation the pop and push methods will try to compute their operations; if they fail they will surrender their
-    turn and try later. The reason they give up their turn is to reduce the number of conflicts between threads at the top of the stack.
-    To achieve linearization this program will make the use of the method compare and set from the AtomicReference class in java where
-    the tread will atomically update the head of the stack if current value of the head is equal to the expected value that the thread has.
-
-- Additional Notes:
-    1) In part 2 every time the size method is called it will count towards the number of operations.
-    2) Instead of choosing between pop() and push(), the thread will have the option to choose between
-       push(), pop(), and size() for part 2.
-
+- Comparison:
+  + It appears that as we increase the number of threads the elimination stack will perform better than the stack from hw2. From the 
+    data comparison I was able to see that the stack from hw2 has a similar or slightly better performance with a small number of threads, but 
+    as we increase the number of threads the stack with the elimination array will yield better results. This is probably because as we increase the number 
+    of threads the stack from hw2 will have a bigger contention causing a sequential bottle neck between the threads. In the other side, this current stack will 
+    cancel pop() and push() operations as they happen back to back.
+ 
 - RESOURCES:
-    1) The art of multiprocessor programming.
-    2) https://docs.oracle.com/javase/7/docs/api/
+    1) The art of multiprocessor programming. (Chapter 11)
+    2) https://docs.oracle.com/javase/8/docs/api/

@@ -1,3 +1,6 @@
+// This is the Stack from hw2 with some modifications to fix
+// some errors after grading.
+
 import java.util.concurrent.atomic.*;
 import java.util.Random;
 import java.util.ArrayList;
